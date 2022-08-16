@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.body{
+    position: absolute;
+    color: #fff;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    display: grid;
+    place-items: center;
+    font-family: "Roboto", sans-serif;
+    
+}
+
+.body.none{
+    width: 0;
+    height: 0;
+}
+
+.body.show{
+    display: "";
+}
+
+.close{
+    color: #fff;
+}
+
+.popup{
+    transition: all 1s;
+    width: 250px;
+    height: 300px;
+    background-color: #1a202e;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 20px/32px Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #96a2b4;
+    padding: 10px;
+    text-align: center;
+}
+
+.buttons{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.data{
+    margin-left: 35px;
+    margin-bottom: 0;
+    color: #96a2b4;
+}

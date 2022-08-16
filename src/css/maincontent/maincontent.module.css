@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.Each_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    margin-left: 20px;
+    height: 50px;
+    transition: all 300ms;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Each_content.dark{
+    background-color: #10131c;
+    border-radius: 10px;
+}
+
+.Each_content.dark:hover{
+    background-color: #10131c;
+}
+
+.section1{
+    display: flex;
+    align-items: center;
+}
+
+.section1 p{
+    margin-left: 10px;
+}
+
+.Each_content p{
+    margin-top: 16px;
+    color: #cfd8e3;
+}
+
+.add_remove{
+    margin-top: 2px;
+    
+}
+
+.Each_content:hover{
+   background: #151a25;
+   border-radius: 10px;
+}
+
+.all_lists.hide{
+    display: none;
+    height: 0;
+}
+
+.all_lists.show{
+    width: 100%;
+}
+
+.all_lists.show ul li{
+    list-style: none;
+    color: #fff;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    transition: all 300ms;
+    height: 40px;
+    position: relative;
+}
+
+.links{
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+}
+
+.links li{
+    height: 40px;
+    padding-left: 40px;
+    font-weight: 500;
+}
+
+.all_lists.show ul li:hover{
+    color: #5783c7;
+    background: #151a25;
+}
+
+.arrow{
+    position: absolute;
+    right: 170px;
+    font-size: 15px !important;
+    font-weight: 600;
+    margin-left: 30px;
+}
+
+/* #10131c */

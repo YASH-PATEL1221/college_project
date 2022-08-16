@@ -1,0 +1,137 @@
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 50px;
+}
+
+.box{
+    width: 94%;
+    height: max-content;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.Section_margin{
+    margin-bottom: 40px;
+}
+
+.Section1{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.Section1 .each_section1_Card{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Section1 .each_section1_Card p{
+    padding-top: 30px;
+    padding-right: 20px;
+    font-size: 20px;
+    white-space:nowrap;
+    text-align: end;
+    color: #198754;
+}
+
+.Section1 .each_section1_Card p span{
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.Section1 .each_section1_Card img{
+    padding: 40px;
+    padding-top: 30px;
+}
+
+
+.Section2{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Section2 .each_section2_Card{
+    display: flex;
+    flex-direction: column;
+}
+
+.Section2 .each_section2_Card p{
+    text-align: center;
+    font-size: 20px;
+    color: #96a2b4;
+}
+
+.Section3{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Section3 .each_section3_Card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.Section3 .each_section3_Card p{
+    text-align: center;
+    font-size: 20px;
+    color: #96a2b4;
+}
+
+.Section3 .each_section3_Card .table{
+    padding: 0 20px;
+    background: #1a202e;
+}
+
+.Section3 .each_section3_Card .table .table thead{
+    background: #15181d;
+}
+
+.Section3 .each_section3_Card .table .table thead tr th{
+    color: #abaaa1;
+    border-bottom: none;
+    font-weight: 500;
+}
+
+.Section4{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.Section4 .each_section4_Card{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.Section4 .each_section4_Card p{
+    text-align: center;
+    font-size: 20px;
+    color: #96a2b4;
+}
+
+.Section4 .each_section4_Card p{
+    text-align: center;
+    font-size: 20px;
+    color: #96a2b4;
+}
+
+.Section4 .each_section4_Card .table{
+    padding: 0 20px;
+    background: #1a202e;
+}
+
+.Section4 .each_section4_Card .table .table thead{
+    background: #15181d;
+}
+
+.Section4 .each_section4_Card .table .table thead tr th{
+    color: #abaaa1;
+    border-bottom: none;
+    font-weight: 500;
+}

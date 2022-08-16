@@ -1,0 +1,31 @@
+.body{
+    flex: 0.08;
+    background: #1b212d;
+    
+    position: sticky;
+    height: 60px;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.details{
+    display: flex;
+    align-items: center;
+}
+
+.details p{
+    margin-left: 10px;
+}
+
+.avatar{
+    margin: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+.body .menu{
+   margin-right: auto;
+   margin-left: 20px;
+}

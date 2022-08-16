@@ -1,0 +1,42 @@
+.row{
+    border-bottom:1px solid rgba(234, 229, 229, 0.12);
+}
+
+.img{
+    display: grid;
+    place-items: center;
+}
+
+.row td{
+    color: #96a2b4;
+    text-align: center;
+    border: none;
+}
+
+.gender{
+    position: relative;
+}
+
+.gender p{
+    position: absolute;
+    left: 30px;
+    border: 1px solid magenta;
+    font-size: 15px;
+    width: max-content;
+}
+
+.gender.male p{
+    color: #198754;
+    background-color: rgba(25, 135, 84, 0.15);
+    border: none;
+    padding: 5px 10px;
+    font-weight: 400;
+}
+
+.gender.female p{
+    color: #6f42c1;
+    background-color: rgba(111, 66, 193, 0.15);
+    border: none;
+    padding: 5px 10px;
+    font-weight: 400;
+}

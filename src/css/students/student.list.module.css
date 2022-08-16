@@ -1,0 +1,147 @@
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    margin-top: 50px;
+
+    overflow-y: scroll;
+}
+
+.body::-webkit-scrollbar{
+    display: none;
+}
+
+
+.heading{
+    width: 100%;
+    height: 60px;
+    background-color: #020910;
+}
+
+.student__style{
+    padding: 10px;
+}
+
+
+.student__style .table thead{
+    background: #2a3040;
+}
+
+
+.student__style .table thead tr td{
+    color: #96a2b4;
+    text-align: center;
+    border-bottom: none;
+    white-space: nowrap;
+}
+
+.show_items{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    justify-content: flex-end;
+}
+
+.show_items .section1,.show_items .section2,.show_items .section3{
+    margin-left: 30px;
+    color: #919cae;
+}
+
+.show_items .section1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.show_items .section1 .num_of_rows{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border: none;
+    background: #1a202e;
+    border-bottom: 1px solid #fff;
+    color: #919cae;
+    width: 50px;
+    outline: none;
+    font-size: 15px;
+}
+
+.show_items .section2{
+    display: flex;
+}
+
+.show_items .section3{
+    display: flex;
+    margin-bottom: 15px;    
+}
+
+.arrow__buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8f9aac;
+}
+
+.heading{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.heading p{
+    margin-top: 15px;
+    color: #96a2b4;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.heading input{
+    box-sizing: border-box;
+    background: #12161f;
+    border: none;
+    outline: none;
+    caret-color: #8f9aac;
+    padding-left: 20px;
+    height: 35px;
+    color: #96a2b4;
+}
+
+.heading input::placeholder{
+    color: #96a2b4;
+}
+
+.heading input::before{
+    content: 'search';
+    position: absolute;
+    top: 10px;
+}
+
+.heading p ,.heading input{
+    margin-left: 20px;
+}
+
+.no_records{
+    text-align: center;
+    width: 100%;
+    color: #fff;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 600;
+    color: #96a2b4;
+}
+
+.table_body{
+    height: 10px;
+}
+
+/* tbody{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    color: #fff;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+} */

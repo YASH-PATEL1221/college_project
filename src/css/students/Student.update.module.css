@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.body{
+    position: absolute;
+    color: #fff;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    display: grid;
+    place-items: center;
+    font-family: "Roboto", sans-serif;
+}
+
+.body.none{
+    display: none;
+}
+
+.body.show{
+    display: "";
+}
+
+.close{
+    color: #fff;
+}
+
+.popup{
+    width: 600px;
+    height: max-content;
+    background-color: #1a202e;
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    height: 50px;
+    /* background: #fff; */
+}
+
+.header .left{
+    display: flex;
+}
+
+.header .left span{
+    margin-right: 30px;
+}
+
+.header .left p{
+    margin-top: 5px;
+    font-size: 17px;
+    color: #96a2b4;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* .header .right{
+   
+} */
+
+.form{
+    padding: 30px;
+}
+
+.row1,.row2,.row3{
+    display: flex;
+}
+
+.row1 input:nth-child(1),.row2 input:nth-child(1){
+    margin-right: 40px;
+}
+
+.row3 input{
+    margin-left: 40px;
+}
+
+
+.button{
+    background: rgba(0, 0, 0, 0);
+    width: 100px;
+}
+
+
+::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+    margin-right: 10px;
+}
+
+.input{
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    border: 1px solid #96a2b4;
+    height: 50px;
+    padding-left: 30px;
+    background: #1a202e;
+    font-size: 15px;
+    color: #96a2b4;
+}

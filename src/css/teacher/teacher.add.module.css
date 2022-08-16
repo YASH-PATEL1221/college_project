@@ -1,0 +1,76 @@
+.body{
+    display: flex;
+    justify-content: center;
+}
+
+.content{
+    margin-top: 70px;
+}
+
+.label{
+    width: 100%;
+    padding: 10px 0 0 20px;
+    color: #96a2b4;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 17px;
+}
+
+.form{
+    width: 100%;
+    height: max-content;
+    padding: 50px;
+}
+
+.section{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.section .section1_inp,.lastSection input{
+    width: 48%;
+    height: 50px;
+    outline: none;
+    border: none;
+    background: #1a202e;
+    border-radius: 5px;
+    border: 1px solid #96a2b4;
+    caret-color: #96a2b4;
+    padding-left: 10px;
+    color: #96a2b4;
+    transition: border 500ms;
+}
+
+.section .section1_inp:hover , .lastSection input:hover{
+    border: 1px solid #dfecff;
+}
+
+.section .section1_inp::placeholder{
+    color: #96a2b4;
+}
+
+.form .buttons{
+    margin-top: 50px;
+}
+
+.form .buttons .button{
+    margin-left: 10px;
+}
+
+
+.name.valid,.phone_number.valid,.email.valid,.teaching_subject.valid,.education.valid,.joining_date.valid,.address.valid,.gender.valid{
+    border: 1px solid #96a2b4;
+}
+
+.name.not_valid,.phone_number.not_valid,.email.not_valid,.teaching_subject.not_valid,.joining_date.not_valid,.address.not_valid,.gender.not_valid,.education.not_valid{
+    border: 1px solid #ff0000;
+}
+
+/* 
+@media screen and (max-width: 100px) {
+    .section1{
+        flex-direction: column;
+    }
+} */

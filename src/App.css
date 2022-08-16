@@ -1,0 +1,31 @@
+body{
+  background-color: #232b3e;
+  width: 100vw;
+  height: 100vh;
+}
+
+.App{
+  display: flex;
+}
+
+.box{
+  width: 100%;
+  background-color: aqua;
+  height: 50px;
+}
+
+.exp{
+  color: blue;
+}
+
+#card{
+  display: grid;
+  place-items: center;
+}
+
+.hori{
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+
+}

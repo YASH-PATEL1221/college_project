@@ -1,0 +1,16 @@
+.img{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.row td{
+    color: #86a2a7;
+    text-align: center;
+    border-bottom: 1px solid rgba(120, 130, 140, 0.5);
+    padding-top: 15px;
+}
+
+.row:hover{
+    background-color: #151c2c;
+}

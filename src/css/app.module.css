@@ -1,0 +1,17 @@
+.Dashbord_top_view{
+    display: grid;
+    grid-template-columns: auto;
+    background: #232b3e;
+    gap: 10px;
+}
+
+.Dashbord_bottom_view{
+
+}
+
+.grid_container{
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}

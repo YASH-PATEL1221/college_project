@@ -1,0 +1,41 @@
+.img{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.row td{
+    color: #86a2a7;
+    text-align: center;
+    border-bottom: 1px solid rgba(120, 130, 140, 0.5);
+    padding-top: 15px;
+}
+
+.row:hover{
+    background-color: #151c2c;
+}
+
+.Badge{
+    padding: 6px;
+    border-radius: 0;
+    width: fit-content;
+    margin-left: 40px;
+}
+
+.Badge.success{
+    color: #198754;
+    background-color: rgba(25, 135, 84, 0.15);
+    border: none;
+    padding: 5px 10px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.Badge.danger{
+    color: #f11541;
+    background-color: rgba(241, 21, 65, 0.15);
+    border: none;
+    padding: 5px 10px;
+    font-weight: 400;
+    line-height: 1.2;
+}
