@@ -9,9 +9,41 @@ import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 
 function reducer(state,action){
-  console.log([action.input],action.value);
-  return {...state,[action.input]:action.value}
+
+  
+  switch(action.name){
+    case "Title": 
+      if(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(action.value)){
+        return {...state,Title:{...state.Title,[action.name]:action.value,isValid:true}};
+      }
+      return {...state,Title:{...state.Title,[action.name]:action.value,isValid:false}};
+
+    case "Author":
+      if(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(action.value)){
+        return {...state,Author:{...state.Author,[action.name]:action.value,isValid:true}};
+      }
+      return {...state,Author:{...state.Author,[action.name]:action.value,isValid:false}};
+
+    case "Price":
+      // console.log({...state,Price:{...state.Price,[action.name]:action.value}});
+      if(/^[0-9]+$/.test(action.value)){
+        
+        return {...state,Price:{...state.Price,[action.name]:action.value,isValid:true}};
+      }
+      return {...state,Price:{...state.Price,[action.name]:action.value,isValid:false}};
+
+    case "Availability":
+      if(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/.test(action.value)){
+        return {...state,Availability:{...state.Availability,[action.name]:action.value,isValid:true}};
+      }
+      return {...state,Availability:{...state.Availability,[action.name]:action.value,isValid:false}};
+
+    default:
+      return {...state};
+  }
 }
+
+
 
 
 function UpdateTeacher({data}) {
@@ -22,21 +54,38 @@ function UpdateTeacher({data}) {
     window.location.reload(true);
   }
 
+  const [UpdateData, setUpdateData] = useState(data);
+
 
   const InitialState = {
-    bid:data.bid,
-    Title:data.Title,
-    Author:data.Author,
-    Price:data.Price,
-    Availability:data.Availability,
+    bid:{
+      bid:UpdateData.bid,
+      isValid:false
+    },
+    Title:{
+      Title:UpdateData.Title,
+      isValid:false
+    },
+    Author:{
+      Author:UpdateData.Author,
+      isValid:false
+    },
+    Price:{
+      Price:UpdateData.Price,
+      isValid:false
+    },
+    Availability:{
+      Availability:UpdateData.Availability,
+      isValid:false
+    }
   }
 
   
   const [FormData,dispatch] = useReducer(reducer,InitialState);
-
-  function OnChange(e){
+  
+  function TextChanged(e){
     const action = {
-      input:e.target.name,
+      name:e.target.name,
       value:e.target.value
     }
     dispatch(action);
@@ -48,8 +97,6 @@ function UpdateTeacher({data}) {
         <div className={`${LibraryUpdateStyle.popup}`}>
           <div className={`${LibraryUpdateStyle.header}`}>
             <div className={`${LibraryUpdateStyle.left}`}>
-              <span>{data.image}</span>
-              <p>{data.name}</p>
             </div>
             <div className={`${LibraryUpdateStyle.right}`}>
               <IconButton onClick={displayNone}>
@@ -58,24 +105,27 @@ function UpdateTeacher({data}) {
             </div>
           </div>
 
-          <form action={`http://localhost:${PORT}/sms/api/Library/update_Librarys.php`} id='form' method="post" className={`${LibraryUpdateStyle.form}`}>
-            <input type="text" hidden name="sid" onChange={OnChange} value={`${FormData.bid}`} id="" />
-            <div>
-              <input type="text" onChange={OnChange} className={`${LibraryUpdateStyle.input}`} value={`${FormData.Title}`} name="Library_name"/>
-            </div>
-
-            {/* <div className={`${LibraryUpdateStyle.row1}`}>
-              <input type="text" onChange={OnChange} className={`${LibraryUpdateStyle.input}`} value={`${FormData.Library_name}`} name="phone_no" id="" />
-              <input type="email" onChange={OnChange} className={`${LibraryUpdateStyle.input}`} value={`${FormData.Title}`} name="email" id="" />
-            </div> */}
+          <form  action={`http://localhost:${PORT}/sms/api/library/update_books.php`} id='form' method="post" className={`${LibraryUpdateStyle.form}`}>
+            <input type="text" hidden name="bid" defaultValue={`${FormData.bid.bid}`} id="" />
 
             <div className={`${LibraryUpdateStyle.row1}`}>
-              <input type="text" onChange={OnChange} className={`${LibraryUpdateStyle.input}`} value={`${FormData.Price}`} name="courseid"/>
-              <input type="text" onChange={OnChange} className={`${LibraryUpdateStyle.input}`} value={`${FormData.Availability}`} name="roll_no" id="" />
+              <input type="text"  onChange={TextChanged} className={`${LibraryUpdateStyle.input} ${FormData.Title.isValid ? LibraryUpdateStyle.valid: LibraryUpdateStyle.not_valid}`} defaultValue={`${FormData.Title.Title}`} name="Title" id="" />
+              <input type="text" onChange={TextChanged} className={`${LibraryUpdateStyle.input} ${FormData.Author.isValid ? LibraryUpdateStyle.valid: LibraryUpdateStyle.not_valid}`} defaultValue={`${FormData.Author.Author}`} name="Author" id="" />
+            </div>
+
+            <div className={`${LibraryUpdateStyle.row1}`}>
+              <input type="text" onChange={TextChanged} className={`${LibraryUpdateStyle.input} ${FormData.Price.isValid ? LibraryUpdateStyle.valid: LibraryUpdateStyle.not_valid}`} defaultValue={`${FormData.Price.Price}`} name="Price"/>
+              <input type="text" onChange={TextChanged} className={`${LibraryUpdateStyle.input} ${FormData.Availability.isValid ? LibraryUpdateStyle.valid: LibraryUpdateStyle.not_valid}`} defaultValue={`${FormData.Availability.Availability}`} name="Availability" id="" />
             </div>
 
             <div className={`${LibraryUpdateStyle.buttons}`}>
-              <Button className={`${LibraryUpdateStyle.button}`} type="submit" color="primary">
+              <Button className={`${LibraryUpdateStyle.button}`} type="submit" color="primary" disabled={
+                FormData.Title.isValid &&
+                FormData.Author.isValid && 
+                FormData.Price.isValid &&
+                FormData.Availability.isValid ?
+                false : true
+              }>
                 Submit
                 <input hidden type="submit" value="Submit" />
               </Button>
