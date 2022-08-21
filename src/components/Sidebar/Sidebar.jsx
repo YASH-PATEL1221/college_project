@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 
 import SidebarStyle from "../../css/sidebar/sidebar.module.css";
 import MaincontentStyle from "../../css/maincontent/maincontent.module.css";
@@ -14,10 +14,12 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import SchoolIcon from '@mui/icons-material/School';
 import PaidIcon from '@mui/icons-material/Paid';
 import LocalLibraryTwoToneIcon from '@mui/icons-material/LocalLibraryTwoTone';
+import axios from 'axios';
 
-// import Cookie from "../Cookie.js";
+import User from "../GetToken.js"
 
 function Sidebar() {
+  
   return (
     <div className={`${SidebarStyle.body}`}>
       <div className={`${SidebarStyle.section1}`}>
@@ -83,6 +85,8 @@ function Sidebar() {
       </div>
     </div>
   )
+
+ 
 }
 
 export default Sidebar;

@@ -112,3 +112,14 @@
 .gender.not_valid{
     border: 1px solid #ff0000;
 }
+
+.course_id_available,.sid_available,.rollno_available{
+    display: "block";
+    color: #f00;
+    text-align: center;
+    width: 100%;
+}
+
+.course_id_available.hide,.sid_available.hide,.rollno_available.hide{
+    display: none;
+}

@@ -1,31 +1,29 @@
-import React,{useState} from 'react';
+import React from 'react';
 
-function Form() {
-    const [Name, setName] = useState("");
-    const [Address, setAddress] = useState("");
+import FormStyle from "../css/form/form.module.css";
+import Cards from './card/Cards';
 
-    function NameChange(e){
-        setName(e.target.value);
-    }
-
-    function AddressChange(e){
-        setAddress(e.target.value);
-    }
-
-    function ShowData(){
-        alert(Name);
-        alert(Address);
-    }
+function Form({method,inputs,FromName,action}) {
 
     return (
-        <div>
-            <form action="" onSubmit={ShowData}>
-                <input type="text" name="" onChange={NameChange}/>
-                <input type="text" name="" onChange={AddressChange}/>
-
-                <input type="submit" value="Submit" />
-            </form>
-        </div>
+       <div className={`${FormStyle.body}`}>
+            <Cards width="95%" height="max-content" >
+                <form action={`${action}`} method={`${method}`}>
+                    <p>
+                        {FromName}
+                    </p>
+                    <div>
+                        {
+                            inputs.map(input => {
+                                return(
+                                    <input type={`${input.type}`} name={`${input.name}`} id={`${input.id}`}/>
+                                );
+                            })
+                        }
+                    </div>
+                </form>
+            </Cards>
+       </div>
     )
 }
 

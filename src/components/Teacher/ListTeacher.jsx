@@ -38,7 +38,7 @@ function ListTeacher() {
         ViewTeachers = TeacherData.slice(StartIndex,EndIndex);
     }
     
-    console.log(StartIndex,EndIndex);
+    // console.log(StartIndex,EndIndex);
 
     // SEARCH TEXT IN NAME COLUMN
     function ShowRows(e){
@@ -73,7 +73,7 @@ function ListTeacher() {
 
     // GETTING DATA FROM SERVER
     useEffect(() => {
-        console.log("getting data....");
+        // console.log("getting data....");
         axios.get(`http://localhost:${PORT}/sms/api/faculty/get_faculty.php`)
         .then(data => setTeacherData(data.data.data));
     }, []);
@@ -91,7 +91,7 @@ function ListTeacher() {
     <div className={`${TeacherListStyle.body}`}>
 
         {/* TO DISPLAY POPUP TO USER TO UPDATE TEACHER`S DATA*/}
-        {console.log(SendingData.status)}
+        {/* {console.log(SendingData.status)} */}
 
         {/* {SendingData.status !== null} */}
 

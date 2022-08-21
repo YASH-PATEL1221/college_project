@@ -167,15 +167,15 @@ function UpdateComponent(){
     const InitialState = {
         course_name:{
             course_name:StateOfUpdateData.course_name,
-            isValid:false
+            isValid:StateOfUpdateData.course_name.length > 0
         },
         teaching_faculty:{
             teaching_faculty:StateOfUpdateData.teaching_faculty,
-            isValid:false
+            isValid:StateOfUpdateData.teaching_faculty.length > 0
         },
         course_id:{
             course_id:StateOfUpdateData.course_id,
-            isValid:false
+            isValid:StateOfUpdateData.course_id.length > 0
         }
     }
     
@@ -220,8 +220,8 @@ function UpdateComponent(){
                     <Button variant="contained" color="success" component="label" disabled={
                     
                         (
-                        (CourseData.course_name.isValid && !(CourseData.course_name.value === "")) &&
-                        (CourseData.teaching_faculty.isValid && !(CourseData.teaching_faculty.value === ""))
+                        (CourseData.course_name.isValid && (CourseData.course_name.course_name.length > 0)) &&
+                        (CourseData.teaching_faculty.isValid && (CourseData.teaching_faculty.teaching_faculty.length > 0))
                         ) || false
                         ? false : true}>
                             Submit

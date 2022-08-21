@@ -1,10 +1,12 @@
-import React,{useReducer} from 'react';
+import React,{useReducer,useState} from 'react';
+import PORT from "../../PORT.js";
 
 import StudentAddStyle from "../../css/students/student.add.module.css"
 
 import Cards from "../card/Cards";
 
 import Button from '@mui/material/Button';
+import axios from 'axios';
 
 function reducer(state,action){
 
@@ -28,10 +30,14 @@ function reducer(state,action){
       return {...state,dob:{...state.dob,[action.name]:action.value,isValid:false}}
 
     case "address":
-      return {...state,address:{...state.address,[action.name]:action.value,isValid:true}}
+      if(action.value.length > 0){
+        return {...state,address:{...state.address,[action.name]:action.value,isValid:true}}
+      }
+      return {...state,address:{...state.address,[action.name]:action.value,isValid:false}}
 
     case "gender":
-      if(action.value.length > 0){
+      console.log(action.value !== ' ');
+      if(action.value !== ' '){
         console.log(action.value);
         return {...state,gender:{...state.gender,[action.name]:action.value,isValid:true}}
       }
@@ -71,55 +77,62 @@ function reducer(state,action){
   }
 }
 
+
+
 function Add_student() {
 
 const InitialState = {
     rollno:{
       rollno:"",
-      isValid:null
+      isValid:true
     },
     student_name:{
       student_name:"",
-      isValid:null
+      isValid:true
     },
     dob:{
       dob:"",
-      isValid:null
+      isValid:true
     },
     address:{
       address:"",
-      isValid:null
+      isValid:true
     },
     gender:{
       gender:"",
-      isValid:null
+      isValid:true
     },
     admission_date:{
       admission_date:"",
-      isValid:null
+      isValid:true
     },
     phone_number:{
       phone_number:"",
-      isValid:null
+      isValid:true
     },
     email:{
       email:"",
-      isValid:null
+      isValid:true
     },
     cid:{
       cid:"",
-      isValid:null
+      isValid:true
     },
     sid:{
       sid:"",
-      isValid:null
+      isValid:true
     },
     isFormValid:[]
 }
 
 
 
+
 const [StudentData,dispatch] = useReducer(reducer,InitialState);
+
+const [IsCourseID, setIsCourseID] = useState(true);
+const [IsSID, setIsSID] = useState(false);
+const [IsRollno, setRollno] = useState(false);
 
 
 
@@ -131,6 +144,29 @@ function textChanged(e){
 
     dispatch(action);
 }
+function isCourseID_Available(e){
+  axios.get(`http://localhost:${PORT}/sms/api/course/isCourseID_Available.php?cid=${e.target.value}`)
+  .then(data => {
+    console.log(data.data)
+    setIsCourseID(!data.data.is_Available);
+  })
+}
+
+function isSID_Available(e){
+  axios.get(`http://localhost:${PORT}/sms/api/course/isCourseID_Available.php?sid=${e.target.value}`)
+  .then(data => {
+    console.log(data.data)
+    setIsSID(!data.data.is_Available);
+  })
+}
+
+function isRollno_Available(e){
+  axios.get(`http://localhost:${PORT}/sms/api/course/isCourseID_Available.php?rollno=${e.target.value}`)
+  .then(data => {
+    console.log(data.data)
+    setRollno(!data.data.is_Available);
+  })
+}
 
 
 
@@ -140,15 +176,20 @@ function textChanged(e){
         <p className={`${StudentAddStyle.label}`}>
           Add Student
         </p>
+        {console.log(IsCourseID)}
+        <p className={`${StudentAddStyle.course_id_available} ${IsCourseID ? StudentAddStyle.hide : ""}`}>course not exist</p>
+        <p className={`${StudentAddStyle.sid_available} ${!IsSID ? StudentAddStyle.hide : ""}`}>student id not available</p>
+        <p className={`${StudentAddStyle.rollno_available} ${!IsRollno ? StudentAddStyle.hide : ""}`}>rollno not available</p>
 
         <form action="http://localhost:8000/sms/api/student/add_students.php" name='form' method="post" >
           <div className={`${StudentAddStyle.form}`}>
             <div className={`${StudentAddStyle.section}`}>
 
               {/* SID */}
+              {/* {console.log(IsSID)} */}
               <input placeholder='SID'  type="text" name="sid" id="" 
-                className={`${StudentAddStyle.name} ${StudentAddStyle.input} ${StudentAddStyle.sid} ${!StudentData.sid.isValid ? `${StudentAddStyle.not_valid}`:`${StudentAddStyle.valid}`} input`} 
-                onChange={textChanged} value={StudentData.sid.value}/>
+                className={`${StudentAddStyle.name} ${StudentAddStyle.input} ${StudentAddStyle.sid} ${!(StudentData.sid.isValid && !IsSID) ? `${StudentAddStyle.not_valid}`:`${StudentAddStyle.valid}`} input`} 
+                onChange={textChanged} onKeyUp={isSID_Available} value={StudentData.sid.value}/>
 
               {/* Student name */}
               <input placeholder='Student name'  type="text" name="student_name" id="" 
@@ -159,8 +200,8 @@ function textChanged(e){
             <div className={`${StudentAddStyle.section}`}>
               {/* Roll number */}
               <input placeholder='Roll number'  type="text" name="rollno" id="" 
-                className={`${StudentAddStyle.name} ${StudentAddStyle.input} ${StudentAddStyle.roll_no} ${!StudentData.rollno.isValid ? `${StudentAddStyle.not_valid}`:`${StudentAddStyle.valid}`} input`} 
-                onChange={textChanged} value={StudentData.rollno.value}/>
+                className={`${StudentAddStyle.name} ${StudentAddStyle.input} ${StudentAddStyle.roll_no} ${!(StudentData.rollno.isValid && !IsRollno) ? `${StudentAddStyle.not_valid}`:`${StudentAddStyle.valid}`} input`} 
+                onChange={textChanged} onKeyUp={isRollno_Available} value={StudentData.rollno.value}/>
 
               {/* Date of birth */}
               <input placeholder='Date of birth'  type="text" name="dob" id="" 
@@ -203,8 +244,8 @@ function textChanged(e){
 
               {/* Course ID */}
               <input placeholder='Course ID'  type="text" name="cid" id="" 
-                className={`${StudentAddStyle.name} ${StudentAddStyle.input} ${StudentAddStyle.cid} ${!StudentData.cid.isValid ? `${StudentAddStyle.not_valid}`:`${StudentAddStyle.valid}`} input`} 
-                onChange={textChanged} value={StudentData.cid.value}/>
+                className={`${StudentAddStyle.name} ${StudentAddStyle.input} ${StudentAddStyle.cid} ${!(StudentData.cid.isValid && IsCourseID) ? `${StudentAddStyle.not_valid}`:`${StudentAddStyle.valid}`} input`} 
+                onChange={textChanged} onKeyUp={isCourseID_Available} value={StudentData.cid.value}/>
             </div>
 
             <div className={`${StudentAddStyle.buttons}`}>
@@ -212,16 +253,16 @@ function textChanged(e){
               <Button varient="contained" type='submit' name="submit" className={`${StudentAddStyle.button}`} color={"success"} disabled={
                 
                   (
-                    (StudentData.student_name.isValid && !(StudentData.student_name.value === "")) &&
-                    (StudentData.sid.isValid && !(StudentData.sid.value === "")) &&
-                    (StudentData.rollno.isValid && !(StudentData.rollno.value === "")) &&
-                    (StudentData.dob.isValid && !(StudentData.dob.value === "")) &&
-                    (StudentData.address.isValid && !(StudentData.address.value === "")) &&
-                    (StudentData.gender.isValid && !(StudentData.gender.value === "")) &&
-                    (StudentData.admission_date.isValid && !(StudentData.admission_date.value === "")) &&
-                    (StudentData.phone_number.isValid && !(StudentData.phone_number.value === "")) &&
-                    (StudentData.email.isValid && !(StudentData.email.value === "")) &&
-                    (StudentData.cid.isValid && !(StudentData.cid.value === "")) 
+                    (StudentData.student_name.isValid && (StudentData.student_name.student_name.length > 0)) &&
+                    (StudentData.sid.isValid && (StudentData.sid.sid.length > 0)) &&
+                    (StudentData.rollno.isValid && (StudentData.rollno.rollno.length > 0)) &&
+                    (StudentData.dob.isValid && (StudentData.dob.dob.length > 0)) &&
+                    (StudentData.address.isValid && (StudentData.address.address.length > 0)) &&
+                    (StudentData.gender.isValid && (StudentData.gender.gender.length > 0)) &&
+                    (StudentData.admission_date.isValid && (StudentData.admission_date.admission_date.length > 0)) &&
+                    (StudentData.phone_number.isValid && (StudentData.phone_number.phone_number.length > 0)) &&
+                    (StudentData.email.isValid && (StudentData.email.email.length > 0)) &&
+                    (StudentData.cid.isValid && (StudentData.cid.cid.length > 0)) 
                   ) || false
                  ? false : true}>
                   Submit

@@ -60,23 +60,23 @@ function UpdateTeacher({data}) {
   const InitialState = {
     bid:{
       bid:UpdateData.bid,
-      isValid:false
+      isValid:UpdateData.bid.length > 0
     },
     Title:{
       Title:UpdateData.Title,
-      isValid:false
+      isValid: UpdateData.Title.length > 0
     },
     Author:{
       Author:UpdateData.Author,
-      isValid:false
+      isValid:UpdateData.Author.length > 0
     },
     Price:{
       Price:UpdateData.Price,
-      isValid:false
+      isValid:UpdateData.Price.length > 0
     },
     Availability:{
       Availability:UpdateData.Availability,
-      isValid:false
+      isValid:UpdateData.Availability.length > 0 
     }
   }
 
@@ -120,11 +120,12 @@ function UpdateTeacher({data}) {
 
             <div className={`${LibraryUpdateStyle.buttons}`}>
               <Button className={`${LibraryUpdateStyle.button}`} type="submit" color="primary" disabled={
-                FormData.Title.isValid &&
-                FormData.Author.isValid && 
-                FormData.Price.isValid &&
-                FormData.Availability.isValid ?
-                false : true
+               !(
+                (FormData.Title.isValid && FormData.Title.Title.length > 0) && 
+                (FormData.Author.isValid && FormData.Author.Author.length > 0) &&
+                (FormData.Price.isValid && FormData.Price.Price.length > 0) &&
+                (FormData.Availability.isValid && FormData.Availability.Availability.length > 0)
+               )
               }>
                 Submit
                 <input hidden type="submit" value="Submit" />

@@ -43,7 +43,8 @@ function ListLibrary() {
         let value = e.target.value;
         let rows = document.querySelectorAll(".rows");
         rows.forEach(row => {
-            if(row.childNodes[2].innerText.toUpperCase().includes(value.toUpperCase())){
+            console.log(row.childNodes[1]);
+            if(row.childNodes[1].innerText.toUpperCase().includes(value.toUpperCase())){
                 row.style.display = "";
             }else{
                 row.style.display = "none";

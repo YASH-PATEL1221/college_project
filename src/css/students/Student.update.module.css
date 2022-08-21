@@ -102,4 +102,17 @@
     background: #1a202e;
     font-size: 15px;
     color: #96a2b4;
+    transition: all 500ms;
+}
+
+.input:hover{
+    border: 1px solid #b2c1d6;
+}
+
+.input.valid{
+    border: 1px solid #b2c1d6;
+}
+
+.input.invalid{
+    border: 1px solid #ff0000;
 }

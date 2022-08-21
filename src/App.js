@@ -16,11 +16,50 @@ import ListLibrary from "./components/Library/ListLibrary";
 import Main from "./components/Main/Main";
 import Login from "./Login";
 
+import User from "./components/GetToken.js"
 
-import { Route , Routes } from "react-router-dom"
+import React,{useEffect} from "react";
+
+import { Route , Routes} from "react-router-dom"
 import Logout from "./Logout";
 
+import Form from "./components/Form";
+
 function App() {
+  const inputs = [
+    {
+      type:"text",
+      name:"email",
+      id:null
+    },
+    {
+      type:"text",
+      name:"email",
+      id:null
+    },
+    {
+      type:"text",
+      name:"email",
+      id:null
+    },
+    {
+      type:"text",
+      name:"email",
+      id:null
+    },
+  ]
+
+  // function Load(){
+  //   console.log(User[0]);
+  //   if(User[0]){
+  //     window.location.href = `${User[0]}`;
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   Load();
+  // }, []);
+ 
   return (
     <div>
       <Routes>
@@ -43,6 +82,8 @@ function App() {
             <Route path="add" element={<Master page={<AddLibraray/>}/>}/>
             <Route path="list" element={<Master page={<ListLibrary/>}/>}/>
         </Route>
+
+        <Route path="/form" element={<Master page={<Form method={"POST"} inputs={inputs} FromName="Form"/>}/>}></Route>
       </Routes>
       
     </div>

@@ -1,6 +1,11 @@
 .body{
     display: flex;
     justify-content: center;
+    overflow-y: scroll;
+}
+
+.body::-webkit-scrollbar{
+    display: none;
 }
 
 .content{
@@ -29,7 +34,7 @@
     margin-bottom: 50px;
 }
 
-.section .section1_inp,.lastSection input{
+.section .input{
     width: 48%;
     height: 50px;
     outline: none;
@@ -43,11 +48,30 @@
     transition: border 500ms;
 }
 
-.section .section1_inp:hover , .lastSection input:hover{
+.book_name{
+    width: 100%;
+    height: 50px;
+    outline: none;
+    border: none;
+    background: #1a202e;
+    border-radius: 5px;
+    border: 1px solid #96a2b4;
+    caret-color: #96a2b4;
+    padding-left: 10px;
+    color: #96a2b4;
+    transition: border 500ms;
+}
+
+
+.book_name::placeholder{
+    color: #96a2b4;
+}
+
+.section .input:hover , .lastSection .book_name:hover{
     border: 1px solid #dfecff;
 }
 
-.section .section1_inp::placeholder{
+.section .input::placeholder{
     color: #96a2b4;
 }
 
@@ -60,28 +84,31 @@
 }
 
 
-.name.valid,.phone_number.valid,.email.valid,.teaching_subject.valid,.education.valid,.joining_date.valid,.address.valid,.gender.valid{
+.bid.valid,
+.Author.valid,
+.Title.valid,
+.Price.valid,
+.Availability.valid{
     border: 1px solid #96a2b4;
 }
 
-.name.not_valid,.phone_number.not_valid,.email.not_valid,.teaching_subject.not_valid,.joining_date.not_valid,.address.not_valid,.gender.not_valid,.education.not_valid{
+.bid.not_valid,
+.Author.not_valid,
+.Title.not_valid,
+.Price.not_valid,
+.Availability.not_valid{
     border: 1px solid #ff0000;
 }
 
-.course_id_available{
+
+
+.book_id_available{
     display: "block";
-    color: #f00;
+    color: #ff0000;
     text-align: center;
     width: 100%;
 }
 
-.course_id_available.hide{
+.book_id_available.hide{
     display: none;
 }
-
-/* 
-@media screen and (max-width: 100px) {
-    .section1{
-        flex-direction: column;
-    }
-} */

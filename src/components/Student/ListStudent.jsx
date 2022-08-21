@@ -39,7 +39,7 @@ function Liststudent() {
         viewStudents = StudentData.slice(StartIndex,EndIndex);
     }
     
-    console.log(StartIndex,EndIndex);
+    // console.log(StartIndex,EndIndex);
 
     // SEARCH TEXT IN NAME COLUMN
     function ShowRows(e){
@@ -74,7 +74,7 @@ function Liststudent() {
 
     // GETTING DATA FROM SERVER
     useEffect(() => {
-        console.log("getting data....");
+        // console.log("getting data....");
         axios.get(`http://localhost:${PORT}/sms/api/student/get_students.php`)
         .then(data => setStudentData(data.data.data));
     }, []);
@@ -87,14 +87,14 @@ function Liststudent() {
         setSendingData(data);
     };
 
-    console.log(StudentData);
+    // console.log(StudentData);
 
 
     return (
     <div className={`${StudentListStyle.body}`}>
 
         {/* TO DISPLAY POPUP TO USER TO UPDATE student`S DATA*/}
-        {console.log(SendingData.status)}
+        {/* {console.log(SendingData.status)} */}
 
         {/* {SendingData.status !== null} */}
 
